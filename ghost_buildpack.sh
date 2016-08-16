@@ -1,7 +1,6 @@
 #!/bin/bash
 # https://myfox.ghost.morea.fr/doc/rst/scripts.html
 set -e
-set -x
 
 usage()
 {
@@ -65,9 +64,9 @@ mv ${APP} config.d
 sed -i "s/LOGS_SERVER/${LOGS_SERVER}/g" config.d/*
 
 # Change environment in tags for production environment
-if ${CLIENT_ENV}="prod"; then
+if [ "${CLIENT_ENV}" = "prod" ]; then
   sed -i "s/preprod/prod/g" config.d/*
 fi
 
 # Remove unused directories
-find . -maxdepth 1 -type d -not -name "config.d" -exec rm -rf {} \;
+find . -maxdepth 1 -type d -not \( -name "config.d" -o -name "." -o -name ".." \) -exec rm -rf {} \;
