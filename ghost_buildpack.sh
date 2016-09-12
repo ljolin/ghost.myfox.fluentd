@@ -9,7 +9,7 @@ Choose supervisor config files to enable
 
 Usage : $(basename $0) -e <environment> -c "foo bar"
       -h | --help      : Show this message
-      -e | --env       : Environement
+      -e | --env       : Environment
       -A | --app       : Application name
                
                ex : Enable configs for the app foo
@@ -51,9 +51,9 @@ if ! [[ "${KNOWN_ENVS}" =~ ${CLIENT_ENV} ]]; then
   exit 1
 fi
 
-if [ "${CLIENT_ENV}"="preprod" ]; then
+if [ "${CLIENT_ENV}" == "preprod" ]; then
   LOGS_SERVER="log-preprod.myfox.io"
-elif [ "${CLIENT_ENV}"="prod" ]; then
+elif [ "${CLIENT_ENV}" == "prod" ]; then
   LOGS_SERVER="internal-log.myfox.io"
 fi
 
