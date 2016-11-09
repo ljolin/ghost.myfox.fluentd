@@ -30,7 +30,7 @@ while (($#)); do
     esac
 done
 
-ALLOWED_APPS=("shcp api videocloud consumers")
+ALLOWED_APPS=("shcp api videocloud consumers update")
 KNOWN_ENVS=("prod preprod")
 
 if [ -z ${CLIENT_ENV} ]; then
